@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: api
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      containers:
+      - name: api
+        image: api:latest
+        ports:
+        - containerPort: 5000
+        resources:
+          requests:
+            memory: "64Mi"   # Minimum memory the container needs
+            cpu: "250m"      # Minimum CPU the container needs
+          limits:
+            memory: "128Mi"  # Maximum memory the container can use
+            cpu: "500m"      # Maximum CPU the container can use
+
