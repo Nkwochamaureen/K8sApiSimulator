@@ -1,2 +1,10 @@
 # Ignore executable files
 *.exe
+kubectl.exe
+
+# Ignore terraform state/lock/provider
+.terraform.lock.hcl
+.terraform/
+terraform.tfstate
+terraform.tfstate.backup
+terraform.tfstate.lock.info

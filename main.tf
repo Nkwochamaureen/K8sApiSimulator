@@ -1,7 +1,3 @@
-provider "kubernetes" {
-  config_path = "~/.kube/config"
-}
-
 resource "kubernetes_deployment" "api" {
   metadata {
     name = "api-deployment"
@@ -21,7 +17,7 @@ resource "kubernetes_deployment" "api" {
       }
       spec {
         container {
-          image = "api:latest"
+          image = "nkwocha1234/api:latest"
           name  = "api"
           port {
             container_port = 5000
