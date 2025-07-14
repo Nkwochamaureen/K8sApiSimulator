@@ -1,6 +1,13 @@
+resource "kubernetes_namespace" "demo" {
+  metadata {
+    name = "demo"
+  }
+}
+
 resource "kubernetes_deployment" "api" {
   metadata {
     name = "api-deployment"
+    namespace = kubernetes_namespace.demo.metadata[0].name
   }
   spec {
     replicas = 2

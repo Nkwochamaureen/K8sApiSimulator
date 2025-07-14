@@ -15,7 +15,7 @@ spec:
       containers:
       - name: api
         image: api:latest
-        imagePullPolicy: Never  # Prevents Kubernetes from pulling from Docker Hub
+        imagePullPolicy: Never
         ports:
         - containerPort: 5000
         resources:
