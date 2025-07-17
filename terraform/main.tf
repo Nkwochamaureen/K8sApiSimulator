@@ -36,9 +36,11 @@ resource "kubernetes_deployment" "api" {
 }
 
 resource "kubernetes_service" "api" {
-  metadata {
-    name = "api-service"
-  }
+ metadata {
+  name = "api-service"
+  namespace = kubernetes_namespace.demo.metadata[0].name
+}
+
   spec {
     selector = {
       app = "api"
