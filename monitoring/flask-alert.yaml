@@ -1,0 +1,20 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: flask-alert-rule
+  namespace: monitoring
+  labels:
+    release: kps   # must match your Prometheus release label
+spec:
+  groups:
+    - name: flask.rules
+      rules:
+        - alert: FlaskAppDown
+          expr: up{job="api-service"} == 0
+          for: 1m
+          labels:
+            severity: critical
+          annotations:
+            summary: "Flask app is down"
+            description: "No metrics received from Flask app for 1 minute."
+

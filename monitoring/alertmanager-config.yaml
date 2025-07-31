@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: alertmanager-kps-kube-prometheus-stack-alertmanager
+  namespace: monitoring
+stringData:
+  alertmanager.yaml: |
+global:
+  smtp_smarthost: 'smtp.gmail.com:587'
+  smtp_from: 'mnkwochae2019@gmail.com'
+  smtp_auth_username: 'mnkwochae2919@gmail.com'
+  smtp_auth_password: 'DRAGON'  
+
+route:
+  receiver: 'email-slack'
+  group_wait: 30s
+  group_interval: 5m
+  repeat_interval: 3h
